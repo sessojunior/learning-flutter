@@ -60,7 +60,7 @@ void main() {
   bool b1 = true;
   bool b2 = false;
   print(b1 && b2); // e
-  print(b1 || b2); // ou
+  //print(b1 || b2); // ou
   print(!b1); // not
 
   // If/else
