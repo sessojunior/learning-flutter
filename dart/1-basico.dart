@@ -81,21 +81,22 @@ void main() {
   print(resultado);
 
   // Switch
-
+  // Uso do break é desnecessário a partir do Dart 3.0: https://dart.dev/tools/linter-rules/unnecessary_breaks
+  // Só use break quando precisar interromper antes do case. Ver exemplo no link.
   String cor = "amarelo";
   switch (cor) {
     case "vermelho":
       print("Cor vermelho");
-      break;
+      // break; 
     case "azul":
       print("Cor azul");
-      break;
+      // break;
     case "amarelo":
       print("Cor amarelo");
-      break;
+      // break;
     default:
       print("Cor desconhecida");
-      break;
+      // break;
   }
 
   // While
