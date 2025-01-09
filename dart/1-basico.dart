@@ -5,6 +5,23 @@ void main() {
 
   // Variáveis básicas
 
+  var valorA = "Fusca";
+  print(valorA);
+
+  var valorB = 10, valorC = 20; // Várias variáveis na mesma linha (mesmo tipo)
+  print(valorB + valorC); // 30
+  var valorD = 10, valorE = "Ford"; // Várias variáveis na mesma linha (tipos diferentes)
+  print(valorD); // 10
+  print(valorE); // Ford
+
+  // Concatenar strings
+  print("Ferrari"
+  "Mercedes"
+  "BMW"); // FerrariMercedesBMW
+  print("Ferrari" "Mercedes" "BMW"); // FerrariMercedesBMW
+  print("Ferrari" + "Mercedes" + "BMW"); // FerrariMercedesBMW
+  print("Ferrari\nMercedes\nBMW");
+
   int idade = 10;
   String nome = "Mario";
   double altura = 1.80;
@@ -31,6 +48,16 @@ void main() {
   print(n2);
   n2--;
   print(n2);
+
+  var a, b;
+  a = 3;
+  b = ++a; // a = 4 (a = a + 1), b = 4 (incrementa o "a" antes da atribuição)
+  print("a: $a, b: $b"); // a: 4, b: 4
+
+  var c, d;
+  c = 3;
+  d = c++; // c = 4 (c = c + 1), d = 3 (incrementa o "c" só depois da atribuição)
+  print("c: $c, d: $d"); // c: 4, d: 3
 
   // Tomadores de decisão
 
@@ -63,7 +90,15 @@ void main() {
   //print(b1 || b2); // ou
   print(!b1); // not
 
-  // If/else
+  // Operador ??
+
+  int? x, y, z;
+  y = 20;
+  z = null;
+  x = z ?? y; // x = z, mas se z for nulo, x = y
+  print("x: $x");
+
+  // if else
 
   double nota = 5.3;
   if (nota >= 6.0) {
@@ -80,7 +115,7 @@ void main() {
   String resultado = nota2 >= 6.0 ? "Aprovado" : "Reprovado";
   print(resultado);
 
-  // Switch
+  // switch
   // Uso do break é desnecessário a partir do Dart 3.0: https://dart.dev/tools/linter-rules/unnecessary_breaks
   // Só use break quando precisar interromper antes do case. Ver exemplo no link.
   String cor = "amarelo";
@@ -99,7 +134,7 @@ void main() {
       // break;
   }
 
-  // While
+  // while
 
   int i = 1;
   while (i <= 5) {
@@ -107,7 +142,7 @@ void main() {
     i++;
   }
 
-  // Do-while
+  // do while
 
   int j = 10;
   do {
@@ -120,4 +155,15 @@ void main() {
   for (int k = 100; k <= 105; k++) {
     print(k);
   }
+
+  // for in
+
+  List<String> cores = ["vermelho", "azul", "amarelo"];
+  for (String cor in cores) {
+    print(cor);
+  }
+
+  // forEach
+
+  cores.forEach((item) => print(item));
 }

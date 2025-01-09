@@ -69,6 +69,7 @@ void main() {
   // Const
   // Constante - não permite alterar o valor depois em hipótese nenhuma
   // Não é necessário especificar o tipo de variável, já que o Dart já detecta a partir do valor
+  // const - precisa ser especificado em tempo de compilação
   
   //const String nome = "Mario";
   const nome1 = "Mario";
@@ -83,6 +84,8 @@ void main() {
   // final
   // final - semelhante a constantes, não permite alterar o valor depois em hipótese alguma
   // final - não precisa ser especificado em tempo de compilação, pode ser especificado depois
+  // final - precisa ser atribuído em tempo de execução
+  
   final String nome2;
   nome2 = "Fernanda"; // Valor atribuído em tempo de execução, porém uma vez atribuído, esse valor não pode ser modificado mais
   print(nome2); // Fernanda

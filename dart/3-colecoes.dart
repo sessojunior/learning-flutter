@@ -115,8 +115,22 @@ void main() {
 
   // Listas no Null safety
 
-  List<String> lista1 = ["Abacate", "Banana", "Laranja", "Maçã", "Uva"]; // Cria uma lista de String com 5 itens com valores não null
-  print(lista1); // [Abacate, Banana, Laranja, Maçã, Uva]
+  List<int> numeros1 = [56,3, 98, 32, 17, 89, 23, 12, 45, 78]; 
+  print(numeros1); // [56, 3, 98, 32, 17, 89, 23, 12, 45, 78]
+  numeros1.sort(); // Ordena a lista em ordem crescente
+  print(numeros1); // [3, 12, 17, 23, 32, 45, 56, 78, 89, 98]
+  numeros1.sort((a, b) => b.compareTo(a)); // Ordena a lista em ordem decrescente
+  print(numeros1); // [98, 89, 78, 56, 45, 32, 23, 17, 12, 3]
+  numeros1.add(400); // Adiciona o valor 4 ao final da lista
+  print(numeros1); // [98, 89, 78, 56, 45, 32, 23, 17, 12, 3, 400]
+  numeros1.insert(0, 2); // Insere o valor 2 na primeira posição da lista
+  print(numeros1); // [2, 98, 89, 78, 56, 45, 32, 23, 17, 12, 3, 400]
+  List<String> lista1 = ["Tomate", "Abacate", "Banana", "Laranja", "Maçã", "Uva"]; // Cria uma lista de String com 5 itens com valores não null
+  print(lista1); // [Tomate, Abacate, Banana, Laranja, Maçã, Uva]
+  lista1.sort((a, b) => a.compareTo(b)); // Ordena a lista por ordem alfabética
+  print(lista1); // [Abacate, Banana, Laranja, Maçã, Tomate, Uva]
+  lista1.sort((a, b) => b.compareTo(a)); // Ordena a lista por ordem alfabética invertida
+  print(lista1); // [Uva, Tomate, Maçã, Laranja, Banana, Abacate]
   List<String?> lista2 = ["Ford", "Mercedes", null, "Fiat"]; // Cria uma lista de String com 3 itens incluindo valores null, pois possui o ? após o String
   print(lista2); // [Ford, Mercedes, null, Fiat]
   List<String>? listaNull1 = null; // Lista null porque tem o ? depois do tipo: List<String>? e foi declarada como null. Mas, null != []
