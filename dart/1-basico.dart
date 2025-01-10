@@ -4,6 +4,7 @@ void main() {
   print("Hello World!");
 
   // Variáveis básicas
+  // Padrão: camelCase
 
   var valorA = "Fusca";
   print(valorA);

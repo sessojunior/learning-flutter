@@ -100,8 +100,32 @@ void main() {
 
   // Arrow function
 
-  String saudacaoArrow() => "Bom dia. Tudo bem?";
+  String saudacaoArrow() => "Saudação de arrow function";
   print(saudacaoArrow());
+
+  var variavelAnonima = () => print("Variável anonima"); 
+  variavelAnonima();
+  var variavelAnonimaComParametro = (mensagem) => print("Variável anonima com parâmetro: $mensagem"); 
+  variavelAnonimaComParametro("Mensagem da variável");
+
+  // Closures
+  // Função declarada dentro do corpo de outra função
+  // Pode retornar as variáveis locais e da função superior
+  funcaoClosures();
+
+}
+
+// Função Closures
+void funcaoClosures() {
+  // Null Function(String) saudacao
+  var saudacao = (String nome) {
+    // void Function(String) mensagem 
+    var mensagem = (String complemento) => print("Olá $nome! $complemento");
+    mensagem("Tudo bem?");
+  };
+
+  saudacao("Mario"); // Olá Mario! Tudo bem?
+  print(saudacao); // Closure: (String) => Null
 }
 
 // Função com parâmetros posicionais
