@@ -2,6 +2,8 @@ import 'Conta.dart';
 
 void main() {
 
+  // Orientação a objetos
+
   // Classes
   // São objetos em Dart, com atributos (variáveis - propriedades) e métodos (funções - métodos)
   // Padrão: PascalCase
@@ -76,13 +78,6 @@ void main() {
     ..idade = 14
     ..info(); // Nome: Lucas, idade: 14
 
-  // Instância de usuario
-  final Usuario usuario1 = Usuario();
-  usuario1.usuario = "sessojunior";
-  usuario1.senha = "1234567";
-  print(usuario1.usuario); // sessojunior
-  usuario1.autenticar(); // Usuário ou senha incorretos
-
   // Instância de conta
   // Arquivo de classe externa Conta.dart
   final Conta conta1 = Conta();
@@ -93,20 +88,37 @@ void main() {
   print(conta1.saldo); // 100.0
   conta1.sacar(60.00); 
   print(conta1.saldo); // 40.0
-}
 
-class Pessoa {
-  String? nome;
-  int idade = 0;
+  // Instância de usuario
+  final Usuario usuario1 = Usuario("sessojunior", "123456", nome: "Mario"); // Construtor Usuario com parâmetros nomeados
+  usuario1.nome = "Mario";
+  print(usuario1.nome); // Mario
+  print(usuario1.usuario); // sessojunior
+  print(usuario1.cargo); // Usuário
+  usuario1.autenticar(); // Usuário autenticado
 
-  void info() {
-    print("Nome: $nome, idade: $idade");
-  }
+  final Usuario usuario2 = Usuario.admin("sessonanda", "9999999", nome: "Fernanda"); // Construtor Usuario.admin com parâmetros nomeados
+  usuario2.usuario = "nanda";
+  usuario2.senha = "6543210";
+  print(usuario2.nome); // Fernanda
+  print(usuario2.usuario); // nanda
+  print(usuario2.cargo); // Administrador
+  usuario2.autenticar(); // Usuário ou senha incorretos
 }
 
 class Usuario {
-  late String usuario;
-  late String senha;
+  late String usuario, senha, nome, cargo;
+  late int idade;
+
+  Usuario(this.usuario, this.senha, {required this.nome, String cargo = "Usuário"}) {
+    this.cargo = cargo;
+    print("Construtor Usuario com parâmetros nomeados");
+  }
+
+  Usuario.admin(this.usuario, this.senha, {required this.nome}) {
+    this.cargo = "Administrador";
+    print("Construtor Usuario.admin com parâmetros nomeados");
+  }
 
   void autenticar() {
     // Simulando recuperar dados do banco de dados
@@ -118,6 +130,15 @@ class Usuario {
     } else {
       print("Usuário ou senha incorretos");
     }
+  }
+}
+
+class Pessoa {
+  String? nome;
+  int idade = 0;
+
+  void info() {
+    print("Nome: $nome, idade: $idade");
   }
 }
 

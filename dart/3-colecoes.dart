@@ -265,4 +265,35 @@ void main() {
   print(jsonDados["cursos"][0]["nome"]); // Dart
   print(jsonDados["endereco"]); // {logradouro: Rua 1, cidade: São Paulo, estado: SP}
   print(jsonDados["endereco"]["cidade"]); // São Paulo
+
+  // Records
+  final pessoa1 = (id: 1, nome: "Mario", idade: 42); 
+  print(pessoa1); // (id: 1, nome: Mario, idade: 42)
+  print(pessoa1.nome); // Mario
+
+  final pessoa2 = (2, "Lucas", 15);
+  print(pessoa2); // (2, Lucas, 15)
+  print(pessoa2.$2); // 15
+
+  // Pattern matching
+
+  final list1 = [5, 4, 3, 2, 1];
+  final [a, b, c, d, e] = list1;
+  print("a: $a, b: $b, c: $c, d: $d, e: $e"); // a: 5, b: 4, c: 3, d: 2, e: 1
+  
+  final list2 = ["a", "b", "c", "d", "e"];
+  //final [a2, b2] = list2; // Daria um erro, porque não corresponde a quantidade de elementos
+  final [a2, b2, ...c2] = list2; // Utilizar o operador ... (spread) para pegar o restante
+  print("a2: $a2, b2: $b2, c2: $c2"); // a2: a, b2: b, c2: [c, d, e]
+
+  final pessoaFinal1 = PessoaFinal("Mario", 42);
+  final PessoaFinal(idade: age, nome: name) = pessoaFinal1;
+  print("Nome: $name, idade: $age"); // Correspondência de variáveis: Nome: Mario, idade: 42
+}
+
+class PessoaFinal {
+  final String nome;
+  final int idade;
+  
+  PessoaFinal(this.nome, this.idade);}
 }

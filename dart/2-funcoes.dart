@@ -108,11 +108,45 @@ void main() {
   var variavelAnonimaComParametro = (mensagem) => print("Variável anonima com parâmetro: $mensagem"); 
   variavelAnonimaComParametro("Mensagem da variável");
 
+  // Futures (no Javascript são como Promises)
+  // São funções assíncronas que são executadas por último
+  // E podem retornar valores ou null
+
+  Future myFuture = Future(() {
+    print("Estamos dentro da função futura!"); // Estamos dentro da função futura!
+    return 10;
+  });
+  myFuture
+    .catchError((error) => print("Erro: $error"))
+    .then((valor) => print("Resultado myFuture: $valor")); // Resultado myFuture: 10
+
+  Future<int> minhaFuncaoFutura() async {
+    print("Estamos dentro da função futura!"); // Estamos dentro da função futura!
+    await Future.delayed(Duration(seconds: 2)); // Aguarda 2 segundos
+    return 20;
+  }
+
+  minhaFuncaoFutura()
+    .then((valor) => print("Resultado minhaFuncaoFutura: $valor")); // Resultado minhaFuncaoFutura: 20
+
   // Closures
   // Função declarada dentro do corpo de outra função
   // Pode retornar as variáveis locais e da função superior
   funcaoClosures();
 
+  // Streams
+  contadorStream().listen((valor) => print("Contador: $valor"), 
+    onDone: () => print("Fim da contagem!"), 
+    onError: (error) => print("Erro de contagem: $error"),);
+  print("Agora: ${agora()}"); // Agora: 2025-01-11 16:16:18.818014
+}
+
+// Streams
+Stream<int> contadorStream() async* {
+  for (int i = 1; i <= 10; i++) {
+    await Future.delayed(Duration(seconds: 1)); // Aguarda 1 segundo
+    yield i;
+  }
 }
 
 // Função Closures
