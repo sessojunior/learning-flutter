@@ -295,5 +295,5 @@ class PessoaFinal {
   final String nome;
   final int idade;
   
-  PessoaFinal(this.nome, this.idade);}
+  PessoaFinal(this.nome, this.idade);
 }
