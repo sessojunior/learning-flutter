@@ -4,7 +4,6 @@
 // Status Codes: https://github.com/waldemarnt/http-status-codes
 
 import 'dart:convert'; // Para uso do jsonDecode
-import 'dart:ffi';
 
 import 'package:fakeapi/models/Posts.dart';
 import 'package:http/http.dart' as http; // Importante: colocar como " as http" para ficar acessível
