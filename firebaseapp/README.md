@@ -1,6 +1,6 @@
 # firebaseapp
 
-Projeto usando Flutter e Firebase
+Flutter com Firebase
 
 ## Getting Started
 
