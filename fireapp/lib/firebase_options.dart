@@ -83,4 +83,5 @@ class DefaultFirebaseOptions {
     authDomain: 'fireapp-a7a18.firebaseapp.com',
     storageBucket: 'fireapp-a7a18.firebasestorage.app',
   );
+
 }

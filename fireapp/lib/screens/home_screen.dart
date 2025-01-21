@@ -1,9 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fireapp/components/menu.dart';
 import 'package:fireapp/helpers/hour_helpers.dart';
 import 'package:fireapp/models/hour.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:uuid/uuid.dart';
 
 class HomeScreen extends StatefulWidget {
 
@@ -17,7 +19,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   List<Hour> listHours = [];
-  // FirebaseFirestore firestore = FirebaseFirestore.instance;
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   @override
   void initState() {
@@ -32,7 +34,9 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: const Text("Home"),
       ),
-      floatingActionButton: FloatingActionButton(onPressed: () { }, child: const Icon(Icons.add),),
+      floatingActionButton: FloatingActionButton(onPressed: () {
+        showFormModal();
+      }, child: const Icon(Icons.add),),
       body: 
         (listHours.isEmpty) 
           ? const Center(child: Text("Nenhuma hora cadastrada", textAlign: TextAlign.center, style: TextStyle(fontSize: 20),),) 
@@ -82,7 +86,6 @@ class _HomeScreenState extends State<HomeScreen> {
     final minutosMaskFormatter = MaskTextInputFormatter(mask: '##:##', filter: { "#": RegExp(r'[0-9]') });
 
     TextEditingController descricaoController = TextEditingController();
-    final descricaoMaskFormatter = TextEditingController();
 
     if (model != null) {
       title = 'Editando';
@@ -130,7 +133,20 @@ class _HomeScreenState extends State<HomeScreen> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   TextButton(onPressed: () => Navigator.pop(context), child: Text(skipButtonText)),
-                  TextButton(onPressed: () => Navigator.pop(context), child: Text(confirmButtonText)),
+                  ElevatedButton(onPressed: () {
+                    Hour hour = Hour(
+                      id: const Uuid().v4(),
+                      data: dataController.text,
+                      minutos: HourHelpers.hoursToMinutes(minutosController.text),
+                    );
+                    if (descricaoController.text.isNotEmpty) hour.descricao = descricaoController.text;
+                    if (model != null) {
+                      hour.id = model.id;
+                    }
+                    firestore.collection(widget.user.uid).doc(hour.id).set(hour.toMap());
+                    refresh();
+                    Navigator.pop(context);
+                  }, child: Text(confirmButtonText)),
                 ],
               ),
               SizedBox(height: 160,)
@@ -140,6 +156,13 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
   
-  void remove(Hour model) { }
+  void remove(Hour model) {
+    firestore.collection(widget.user.uid).doc(model.id).delete();
+    refresh();
+  }
+  
+  void refresh() {
+
+  }
 }
 
