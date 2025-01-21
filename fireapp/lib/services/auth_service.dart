@@ -6,7 +6,6 @@ class AuthService {
   Future<String?> signIn({required String email, required String password}) async {
     try {
       await _firebaseAuth.signInWithEmailAndPassword(email: email, password: password);
-      return "success";
     } on FirebaseAuthException catch (e) {
       switch (e.code) {
         case "invalid-email":
@@ -21,8 +20,6 @@ class AuthService {
           return "Muitas requisições. Tente novamente mais tarde.";
         case "operation-not-allowed":
       }
-    } catch (e) {
-      return e.toString();
     }
     return null;
   }
@@ -31,7 +28,6 @@ class AuthService {
     try {
       UserCredential userCredential = await _firebaseAuth.createUserWithEmailAndPassword(email: email, password: password);
       await userCredential.user!.updateDisplayName(email);
-      return "success";
     } on FirebaseAuthException catch (e) {
       switch (e.code) {
         case "invalid-email":
@@ -42,8 +38,6 @@ class AuthService {
           return "A senha digitada é muito fraca.";
         case "operation-not-allowed":
       }
-    } catch (e) {
-      return e.toString();
     }
     return null;
   }
@@ -51,21 +45,18 @@ class AuthService {
   Future<String?> resetPassword({required String email}) async {
     try {
       await _firebaseAuth.sendPasswordResetEmail(email: email);
-      return "success";
     } on FirebaseAuthException catch (e) {
-    switch (e.code) {
-      case "invalid-email":
-        return "O e-mail digitado é inválido.";
-      case "user-not-found":
-        return "Não existe o usuário deste e-mail.";
-      case "user-disabled":
-        return "O usuário deste e-mail foi desativado.";
-      case "too-many-requests":
-        return "Muitas requisições. Tente novamente mais tarde.";
-      case "operation-not-allowed":
-    }
-    } catch (e) {
-      return e.toString();
+      switch (e.code) {
+        case "invalid-email":
+          return "O e-mail digitado é inválido.";
+        case "user-not-found":
+          return "Não existe o usuário deste e-mail.";
+        case "user-disabled":
+          return "O usuário deste e-mail foi desativado.";
+        case "too-many-requests":
+          return "Muitas requisições. Tente novamente mais tarde.";
+        case "operation-not-allowed":
+      }
     }
     return null;
   }

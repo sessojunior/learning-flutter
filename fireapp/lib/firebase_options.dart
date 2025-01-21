@@ -63,6 +63,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '890465634864',
     projectId: 'fireapp-a7a18',
     storageBucket: 'fireapp-a7a18.firebasestorage.app',
+    iosClientId: '890465634864-69ku8idlk0fam7jgt054177nmahvjr4l.apps.googleusercontent.com',
     iosBundleId: 'br.com.sessojunior.fireapp.fireapp',
   );
 
@@ -72,6 +73,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '890465634864',
     projectId: 'fireapp-a7a18',
     storageBucket: 'fireapp-a7a18.firebasestorage.app',
+    iosClientId: '890465634864-69ku8idlk0fam7jgt054177nmahvjr4l.apps.googleusercontent.com',
     iosBundleId: 'br.com.sessojunior.fireapp.fireapp',
   );
 

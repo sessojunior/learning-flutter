@@ -25,6 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
 
+    refresh();
   }
 
   @override
@@ -60,7 +61,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   elevation: 2,
                   child: Column(children: [
                     ListTile(
-                      onLongPress: () {},
+                      onLongPress: () {
+                        showFormModal(model: model);
+                      },
                       onTap: () {},
                       leading: Icon(Icons.list_alt_rounded),
                       title: Text("Data ${model.data} hora: ${HourHelpers.minutesToHours(model.minutos)}"),
@@ -161,8 +164,20 @@ class _HomeScreenState extends State<HomeScreen> {
     refresh();
   }
   
-  void refresh() {
+  Future<void> refresh() async {
+    // double total = 0;
+    List <Hour> temp = [];
 
+    QuerySnapshot<Map<String, dynamic>> snapshot = await firestore.collection(widget.user.uid).get();
+
+    for (DocumentSnapshot<Map<String, dynamic>> doc in snapshot.docs) {
+      Hour hour = Hour.fromMap(doc.data()!);
+      temp.add(hour);
+    }
+
+    setState(() {
+      listHours = temp;
+    });
   }
 }
 

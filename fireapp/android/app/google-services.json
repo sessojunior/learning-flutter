@@ -12,7 +12,12 @@
           "package_name": "br.com.sessojunior.fireapp.fireapp"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "890465634864-ijr9ihn00fvvo4ccsuldd0oibr7dt640.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyA1Q6cuPADEZRRVxXDJ1Z57FD-6OWqdVdM"
@@ -20,7 +25,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "890465634864-ijr9ihn00fvvo4ccsuldd0oibr7dt640.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "890465634864-69ku8idlk0fam7jgt054177nmahvjr4l.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "br.com.sessojunior.fireapp.fireapp"
+              }
+            }
+          ]
         }
       }
     }
