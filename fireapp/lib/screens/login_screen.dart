@@ -1,9 +1,8 @@
 import 'package:fireapp/screens/register_screen.dart';
 import 'package:fireapp/screens/reset_password.dart';
 import 'package:fireapp/services/auth_service.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_sign_in/google_sign_in.dart';
+// import 'package:google_sign_in/google_sign_in.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
@@ -61,7 +60,7 @@ class LoginScreen extends StatelessWidget {
                       }, child: Text("Entrar")),
                       SizedBox(height: 8),
                       ElevatedButton(onPressed: () {
-                        signInWithGoogle();
+                        // signInWithGoogle();
                       }, child: Text("Entrar com Google")),
                       SizedBox(height: 16),
                       TextButton(onPressed: () {
@@ -83,15 +82,15 @@ class LoginScreen extends StatelessWidget {
     );
   }
   
-  Future<UserCredential> signInWithGoogle() async {
-    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-    final GoogleSignInAuthentication? googleAuth = await googleUser!.authentication;
+  // Future<UserCredential> signInWithGoogle() async {
+  //   final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+  //   final GoogleSignInAuthentication? googleAuth = await googleUser!.authentication;
 
-    final credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth?.accessToken, 
-      idToken: googleAuth?.idToken
-    );
+  //   final credential = GoogleAuthProvider.credential(
+  //     accessToken: googleAuth?.accessToken, 
+  //     idToken: googleAuth?.idToken
+  //   );
 
-    return await FirebaseAuth.instance.signInWithCredential(credential);
-  }
+  //   return await FirebaseAuth.instance.signInWithCredential(credential);
+  // }
 }
