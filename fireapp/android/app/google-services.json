@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "890465634864",
+    "project_id": "fireapp-a7a18",
+    "storage_bucket": "fireapp-a7a18.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:890465634864:android:d67bb9bf905556cbc17bf5",
+        "android_client_info": {
+          "package_name": "br.com.sessojunior.fireapp.fireapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1Q6cuPADEZRRVxXDJ1Z57FD-6OWqdVdM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
