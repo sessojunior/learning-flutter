@@ -44,7 +44,8 @@ class _HomePageState extends State<HomePage> {
   }
 
   get contador => _contador;
-  get maxContador => _maxContador;
+  get isLotado => _contador == _maxContador;
+  get isVazio => _contador == 0;
 
   @override
   Widget build(BuildContext context) {
@@ -61,17 +62,17 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(contador == maxContador ? "Está lotado!" : "Pode entrar!",
+            Text(isLotado ? "Está lotado!" : "Pode entrar!",
                 style: TextStyle(
                   fontSize: 32,
                   fontWeight: FontWeight.bold,
-                  color: contador == maxContador ? Colors.red : Colors.white,
+                  color: isLotado ? Colors.red : Colors.white,
                 )),
             Padding(
               padding: const EdgeInsets.all(32),
               child: Text(
                 "$contador",
-                style: TextStyle(fontSize: 96, color: Colors.white),
+                style: TextStyle(fontSize: 96, color: isLotado ? Colors.red : Colors.white),
               ),
             ),
             Row(
@@ -79,7 +80,7 @@ class _HomePageState extends State<HomePage> {
               children: <Widget>[
                 TextButton(
                   style: TextButton.styleFrom(
-                    backgroundColor: Colors.white,
+                    backgroundColor: isVazio ? Colors.white.withAlpha(100) : Colors.white,
                     fixedSize: Size(96, 96),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(
@@ -99,7 +100,7 @@ class _HomePageState extends State<HomePage> {
                 SizedBox(width: 24),
                 TextButton(
                   style: TextButton.styleFrom(
-                    backgroundColor: Colors.white,
+                    backgroundColor: isLotado ? Colors.white.withAlpha(100) : Colors.white,
                     fixedSize: Size(96, 96),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(
