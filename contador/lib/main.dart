@@ -16,80 +16,108 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int _contador = 0;
+  final _maxContador = 20;
+
   void decrement() {
-    print("Decrement");
+    // print("Decrement");
+    setState(() {
+      _contador > 0 ? _contador-- : 0;
+    });
+    // print(_contador);
   }
 
   void increment() {
-    print("Increment");
+    // print("Increment");
+    setState(() {
+      _contador < _maxContador ? _contador++ : _maxContador;
+    });
+    // print(_contador);
   }
+
+  get contador => _contador;
+  get maxContador => _maxContador;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Text("Pode entrar!",
-              style: TextStyle(
-                fontSize: 32,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              )),
-          Padding(
-            padding: const EdgeInsets.all(32),
-            child: Text(
-              "11",
-              style: TextStyle(fontSize: 96, color: Colors.white),
-            ),
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/images/sorvetes.jpg'),
+            fit: BoxFit.cover,
+            opacity: 0.25,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              TextButton(
-                style: TextButton.styleFrom(
-                  backgroundColor: Colors.white,
-                  fixedSize: Size(96, 96),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(16),
-                    ),
-                  ),
-                ),
-                onPressed: decrement,
-                child: Text(
-                  "Saiu",
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.black,
-                  ),
-                ),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(contador == maxContador ? "Está lotado!" : "Pode entrar!",
+                style: TextStyle(
+                  fontSize: 32,
+                  fontWeight: FontWeight.bold,
+                  color: contador == maxContador ? Colors.red : Colors.white,
+                )),
+            Padding(
+              padding: const EdgeInsets.all(32),
+              child: Text(
+                "$contador",
+                style: TextStyle(fontSize: 96, color: Colors.white),
               ),
-              SizedBox(width: 24),
-              TextButton(
-                style: TextButton.styleFrom(
-                  backgroundColor: Colors.white,
-                  fixedSize: Size(96, 96),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(16),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                TextButton(
+                  style: TextButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    fixedSize: Size(96, 96),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(16),
+                      ),
                     ),
                   ),
-                ),
-                onPressed: increment,
-                child: Text("Entrou",
+                  onPressed: decrement,
+                  child: Text(
+                    "Saiu",
                     style: TextStyle(
                       fontSize: 20,
                       color: Colors.black,
-                    )),
-              )
-            ],
-          )
-        ],
+                    ),
+                  ),
+                ),
+                SizedBox(width: 24),
+                TextButton(
+                  style: TextButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    fixedSize: Size(96, 96),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(16),
+                      ),
+                    ),
+                  ),
+                  onPressed: increment,
+                  child: Text("Entrou",
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.black,
+                      )),
+                )
+              ],
+            )
+          ],
+        ),
       ),
     );
   }
