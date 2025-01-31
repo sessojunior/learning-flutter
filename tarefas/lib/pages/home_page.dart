@@ -50,29 +50,36 @@ class _HomePageState extends State<HomePage> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Expanded(
-                          child: TextField(
-                            decoration: InputDecoration(
-                              hintText: "Adicione uma tarefa",
-                              border: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey), borderRadius: BorderRadius.circular(8)),
-                              contentPadding: EdgeInsets.only(top: 8, right: 12, bottom: 8, left: 12),
+                          child: SizedBox(
+                            height: 80,
+                            child: Container(
+                              child: TextField(
+                                decoration: InputDecoration(
+                                  hintText: "Adicione uma tarefa",
+                                  border: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey), borderRadius: BorderRadius.circular(8)),
+                                ),
+                                controller: taskController,
+                                onSubmitted: (value) {
+                                  onSubmit();
+                                },
+                              ),
                             ),
-                            controller: taskController,
-                            onSubmitted: (value) {
-                              onSubmit();
-                            },
                           ),
                         ),
                         SizedBox(width: 8),
-                        ElevatedButton(
-                          onPressed: onSubmit,
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.blue,
-                            padding: EdgeInsets.all(15),
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-                          ),
-                          child: Icon(
-                            Icons.add,
-                            color: Colors.white,
+                        SizedBox(
+                          height: 80,
+                          child: ElevatedButton(
+                            onPressed: onSubmit,
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.blue,
+                              padding: EdgeInsets.all(15),
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                            ),
+                            child: Icon(
+                              Icons.add,
+                              color: Colors.white,
+                            ),
                           ),
                         ),
                       ],
@@ -108,6 +115,7 @@ class _HomePageState extends State<HomePage> {
                             });
                           },
                           style: ElevatedButton.styleFrom(
+                            fixedSize: Size.fromHeight(48),
                             backgroundColor: Colors.blue,
                             padding: EdgeInsets.all(16),
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
